@@ -1,6 +1,5 @@
 import { Decoder, IrdaCmd, Pulse, TimeEq } from "./Decoder-if";
 
-
 function GetByte(pulse: Pulse[]): number{
     let r = 0;
     for (let i = 0; i<8; i++){
@@ -21,8 +20,9 @@ function GetByte(pulse: Pulse[]): number{
     return r;
 }
 
-export class NECDecoder implements Decoder{
+export class RC5Decoder implements Decoder{
     Decode(pulse: Pulse[]): IrdaCmd {
+        throw "todo";
         if (!pulse || pulse.length < 33){
             return null;
         }
@@ -51,11 +51,9 @@ export class NECDecoder implements Decoder{
         }
 
         return {
-            protocol: "NEC",
-            param:{
-                address: addr,
-                command: bytes[2]
-            }
+            protocol: "RC5",
+            address: addr,
+            command: bytes[2]
         };
     }
 }

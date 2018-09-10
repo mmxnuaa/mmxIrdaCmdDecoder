@@ -1,8 +1,18 @@
 
-export interface IrdaCmd{
-    protocol: string;
+export interface NECParam{
     address: number;
     command: number;
+}
+export interface SIRCParam{
+    val: number;
+    address: number;
+    command: number;
+    extend?: number;
+}
+
+export interface IrdaCmd{
+    protocol: string;
+    param: NECParam | SIRCParam;
 }
 
 export interface Pulse{
